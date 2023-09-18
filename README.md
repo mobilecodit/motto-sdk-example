@@ -32,8 +32,11 @@ implementation 'kr.motto:motto-sdk:0.9.12'
 * Motto SDK를 연동하기 위해서는 먼저 초기화가 필요합니다.
 * 유저가 Motto의 미션을 완료시 보상을 받을 수 있도록 유저를 식별 할 수 있는 유니크한 ID를 설정해야 합니다.(대체할 ID나 코드가 없다면 실제 회원의 ID라도 설정해야합니다.)
 * Motto SDK는 현재 프래그먼트 형식만 지원합니다. 아래의 코드로 생성할 수 있습니다.
+* 구글광고 아이디는 앱에서 이미 수집하고 있으시면 설정해주시길 바랍니다.<br>
+  더 정확한 사용자 참여를 확인하기 위한 용도로 사용되며 생략하셔도 무방합니다.
 ```java
 Motto.setUid(uid);   // 유저식별 값(아이디 혹은 유저를 판별할 수 있는 유니크한 값)
+//Motto.setAdId(googleAdId);  // 구글 광고아이디(생략가능)
 mottoFragment = Motto.create(this); 
 getSupportFragmentManager().
               beginTransaction().

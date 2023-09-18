@@ -13,7 +13,7 @@
     android:value="앱키" /></code></pre>
 
 ## Gradle 설정
-* 모듈 수준의 build.gradle에 아래의 모듈을 추가합니다.
+* 모듈 수준의 build.gradle에 dependencies 블럭내 아래의 모듈을 추가합니다.
 <pre><code>implementation 'kr.motto:motto-sdk:0.9.12'</code></pre>
 
 ## Proguard 설정
@@ -24,13 +24,14 @@
 * Motto SDK를 연동하기 위해서는 먼저 초기화가 필요합니다.
 * 유저가 Motto의 미션을 완료시 보상을 받을 수 있도록 유저를 식별 할 수 있는 유니크한 ID를 설정해야 합니다.(대체할 ID나 코드가 없다면 실제 회원의 ID라도 설정해야합니다.)
 * Motto SDK는 현재 프래그먼트 형식만 지원합니다. 아래의 코드로 생성할 수 있습니다.
-<pre><code>Motto.setUid(uid);   // 유저식별 값(아이디 혹은 유저를 판별할 수 있는 유니크한 값)
+```
+Motto.setUid(uid);   // 유저식별 값(아이디 혹은 유저를 판별할 수 있는 유니크한 값)
 mottoFragment = Motto.create(this); 
 getSupportFragmentManager().
               beginTransaction().
               replace(R.id.motto_frame, mottoFragment) 
               .commit();
-</code></pre>
+```
 
 ### 뒤로 가기 처리
 * Motto Fragment 내에서 뒤로 가기에 대한 별도 처리를 해야 하므로 뒤로가기 이벤트 발생시 프래그먼트에 알려줘야 합니다.

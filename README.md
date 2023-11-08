@@ -1,6 +1,6 @@
 # 안드로이드용 Motto SDK 연동 가이드
 * 이 문서는 Motto SDK를 연동하기 위한 초기 설정과 소스 일부를 포함하고 있습니다.
-* 현재 Motto SDK의 최신버전은 0.9.17 입니다. 항상 최신 버전을 사용해주시길 바랍니다.
+* 현재 Motto SDK의 최신버전은 0.9.18 입니다. 항상 최신 버전을 사용해주시길 바랍니다.
 * 전체 소스는 샘플 프로젝트를 참조하시길 바랍니다.
 
 ## AndroidManifest 설정
@@ -19,7 +19,7 @@
 ## Gradle 설정
 * 모듈 수준의 build.gradle에 dependencies 블럭내 아래의 모듈을 추가합니다.
 ```java
-implementation 'kr.motto:motto-sdk:0.9.17'
+implementation 'kr.motto:motto-sdk:0.9.18'
 ```
 
 ## Proguard 설정

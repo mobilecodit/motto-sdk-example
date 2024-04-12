@@ -1,6 +1,6 @@
 # 안드로이드용 Motto SDK 연동 가이드
 * 이 문서는 Motto SDK를 연동하기 위한 초기 설정과 소스 일부를 포함하고 있습니다.
-* 현재 Motto SDK의 최신버전은 0.9.21 입니다. 항상 최신 버전을 사용해주시길 바랍니다.
+* 현재 Motto SDK의 최신버전은 1.0.1 입니다. 항상 최신 버전을 사용해주시길 바랍니다.
 * 전체 소스는 샘플 프로젝트를 참조하시길 바랍니다.
 
 ## AndroidManifest 설정
@@ -19,7 +19,7 @@
 ## Gradle 설정
 * 모듈 수준의 build.gradle에 dependencies 블럭내 아래의 모듈을 추가합니다.
 ```java
-implementation 'kr.motto:motto-sdk:0.9.26'
+implementation 'kr.motto:motto-sdk:1.0.1'
 ```
 
 ## Proguard 설정
@@ -68,4 +68,64 @@ public void onBackPressed(){
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
     app:layout_constraintTop_toTopOf="parent" />
+```
+
+### Android 공유기능 설정
+* 캠페인 정답 입력을 위해 Android 공유 기능을 사용하고 있습니다. 아래 예제와 같이 activity 추가 및 AndroidManifest에 설정해 주세요.
+```java
+package kr.motto.mottoapp;
+
+import android.content.Intent;
+import android.os.Bundle;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
+import kr.motto.mottolib.Motto;
+
+public class SharedIntentActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        processReceivedIntent(getIntent());
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        processReceivedIntent(intent);
+    }
+
+    private void processReceivedIntent(Intent intent) {
+        if (!Motto.processReceivedIntent(intent)) {
+            //todo: 모또 SDK에서 처리하지 않은 경우 앱에 처리
+        }
+        finish();
+    }
+}
+```
+```xml
+<activity
+    android:name=".SharedIntentReceiverActivity"
+    android:exported="true"
+    android:screenOrientation="portrait"
+    android:launchMode="singleTask"
+    android:theme="@style/AppTheme.NoTitle">
+    <intent-filter>
+        <action android:name="android.intent.action.SEND" />
+        <category android:name="android.intent.category.DEFAULT" />
+        <data android:mimeType="*/*" />
+    </intent-filter>
+</activity>
+```
+
+### 테마 설정 기능
+* 다크모드, 라이트모드 설정 (default: 다크모드)
+```java
+Motto.setIsDarkMode(false); //라이트모드 설정
+```
+* 백그라운드, 메인색상 지정 (선택사항)
+```java
+Motto.setBackgroundColor(Color.parseColor("#C9C9C9"));
+Motto.setMainColor(Color.parseColor("#FF4356"));
 ```

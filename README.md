@@ -106,7 +106,7 @@ public class SharedIntentActivity extends AppCompatActivity {
 ```
 ```xml
 <activity
-    android:name=".SharedIntentReceiverActivity"
+    android:name=".SharedIntentActivity"
     android:exported="true"
     android:screenOrientation="portrait"
     android:launchMode="singleTask"

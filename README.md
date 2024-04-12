@@ -120,9 +120,9 @@ public class SharedIntentActivity extends AppCompatActivity {
 ```
 
 ### 테마 설정 기능
-* 다크모드, 라이트모드 설정 (default: 다크모드)
+* 다크모드, 라이트모드 설정 (default: 라이트모드)
 ```java
-Motto.setIsDarkMode(false); //라이트모드 설정
+Motto.setIsDarkMode(true); //다크모드 설정
 ```
 * 백그라운드, 메인색상 지정 (선택사항)
 ```java

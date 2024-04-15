@@ -138,4 +138,5 @@ Motto.setMainColor(Color.parseColor("#FF4356"));
     pub_key => 등록된 앱 key 값
     user_id => Motto SDK로 전달된 유저 id
     user_reward => 등록된 비율에 따라 계산된 유저포인트 값
-```
+```
+

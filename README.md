@@ -129,3 +129,13 @@ Motto.setIsDarkMode(true); //다크모드 설정
 Motto.setBackgroundColor(Color.parseColor("#C9C9C9"));
 Motto.setMainColor(Color.parseColor("#FF4356"));
 ```
+
+
+### 포스트백 설정 기능
+* 사용자의 캠페인 참여 기록을 등록된 포스트백 url로 전송합니다. (등록은 업체등록 홈페이지에서 가능)
+* HTTP POST 방식으로 호출합니다.
+```xml
+    pub_key => 등록된 앱 key 값
+    user_id => Motto SDK로 전달된 유저 id
+    user_reward => 등록된 비율에 따라 계산된 유저포인트 값
+```

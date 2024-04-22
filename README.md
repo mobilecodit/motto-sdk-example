@@ -19,7 +19,7 @@
 ## Gradle 설정
 * 모듈 수준의 build.gradle에 dependencies 블럭내 아래의 모듈을 추가합니다.
 ```java
-implementation 'kr.motto:motto-sdk:1.0.3'
+implementation 'kr.motto:motto-sdk:1.0.4'
 ```
 
 ## Proguard 설정

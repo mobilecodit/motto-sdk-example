@@ -1,6 +1,6 @@
 # 안드로이드용 Motto SDK 연동 가이드
 * 이 문서는 Motto SDK를 연동하기 위한 초기 설정과 소스 일부를 포함하고 있습니다.
-* 현재 Motto SDK의 최신버전은 1.0.1 입니다. 항상 최신 버전을 사용해주시길 바랍니다.
+* 현재 Motto SDK의 최신버전은 1.0.5 입니다. 항상 최신 버전을 사용해주시길 바랍니다.
 * 전체 소스는 샘플 프로젝트를 참조하시길 바랍니다.
 
 ## AndroidManifest 설정
@@ -19,7 +19,7 @@
 ## Gradle 설정
 * 모듈 수준의 build.gradle에 dependencies 블럭내 아래의 모듈을 추가합니다.
 ```java
-implementation 'kr.motto:motto-sdk:1.0.4'
+implementation 'kr.motto:motto-sdk:1.0.5'
 ```
 
 ## Proguard 설정
@@ -130,7 +130,6 @@ Motto.setBackgroundColor(Color.parseColor("#C9C9C9"));
 Motto.setMainColor(Color.parseColor("#FF4356"));
 ```
 
-
 ### 포스트백 설정 기능
 * 사용자의 캠페인 참여 기록을 등록된 포스트백 url로 전송합니다. (등록은 업체등록 홈페이지에서 가능)
 * HTTP POST 방식으로 호출합니다.
@@ -140,3 +139,157 @@ Motto.setMainColor(Color.parseColor("#FF4356"));
     user_reward => 등록된 비율에 따라 계산된 유저포인트 값
 ```
 
+
+
+
+---
+
+
+
+
+# Guide to Installing the Motto SDK on Android
+*  This document contains some initial settings and sources for installing Motto SDK.
+*  The latest version of Motto SDK is 1.0.5. Please always use the latest version.
+*  Please refer to the sample project for the full source.
+
+## AndroidManifest setting
+* You need to add permission to allow internet access.
+```xml
+<uses-permission android:name="android.permission.INTERNET">
+```
+
+* You must write the registered app key.
+```xml
+<meta-data 
+    android:name="kr.motto.pub_key" 
+    android:value="{app-key}" />
+```
+
+## Gradle setting
+* Add the below in the dependencies block in build.gradle file.
+```java
+implementation 'kr.motto:motto-sdk:1.0.5'
+```
+
+## Proguard setting
+* If you use Proguard, add the code below to the proguard-rules.pro file.
+```java
+-keep class kr.motto.mottolib.* { public *; }
+```
+
+## Motto-sdk initialize
+* To use Motto SDK, initialization is required first.
+* A unique ID must be set to identify the user so that the user can receive rewards upon completing Motto's mission. (If there is no replacement ID or code, you must set the ID of an actual member.)
+* Motto SDK currently only supports Android Fragment. You can create it with the code below.
+* If you have already collected the Google Advertising ID in the app, please set it. It is optional.
+  
+```java
+Motto.setUid(uid);   // user id (or unique value of user)
+//Motto.setAdId(googleAdId);  // google adid
+mottoFragment = Motto.create(this); 
+getSupportFragmentManager().
+              beginTransaction().
+              replace(R.id.motto_frame, mottoFragment) 
+              .commit();
+```
+
+### Process Back-key event
+* Since back-key envent must be handled separately within the Motto Fragment, the fragment must be notified when a back-key event occurs.
+* Handle it in accordance with the app's policy only when the goBack() function does not return true. 
+```java
+@Override
+public void onBackPressed(){
+  if(mottoFragment.goBack())
+    return;
+  finish();
+}
+```
+
+### Layout XML setting
+* In the layout where you will insert the Motto fragment, the fragment's layout_height should NOT be set to 0dp. <br> You must set it to match_parent or wrap_content.
+```xml
+<FrameLayout
+    android:id="@+id/motto_frame"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="5dp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
+```
+
+### Android share setting
+* We are using the Android sharing feature to enter campaign answers. Please add an activity and set it in AndroidManifest as shown in the example below.
+```java
+package kr.motto.mottoapp;
+
+import android.content.Intent;
+import android.os.Bundle;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
+import kr.motto.mottolib.Motto;
+
+public class SharedIntentActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        processReceivedIntent(getIntent());
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        processReceivedIntent(intent);
+    }
+
+    private void processReceivedIntent(Intent intent) {
+        if (!Motto.processReceivedIntent(intent)) {
+            //todo: process app when Motto SDK returns false.
+        }
+        finish();
+    }
+}
+```
+```xml
+<activity
+    android:name=".SharedIntentActivity"
+    android:exported="true"
+    android:screenOrientation="portrait"
+    android:launchMode="singleTask"
+    android:theme="@style/AppTheme.NoTitle">
+    <intent-filter>
+        <action android:name="android.intent.action.SEND" />
+        <category android:name="android.intent.category.DEFAULT" />
+        <data android:mimeType="*/*" />
+    </intent-filter>
+</activity>
+```
+
+### Theme setting
+* Choose dark mode, light mode  (default: light mode)
+```java
+Motto.setIsDarkMode(true); 
+```
+* Setting background-color, main button color (optional)
+```java
+Motto.setBackgroundColor(Color.parseColor("#C9C9C9"));
+Motto.setMainColor(Color.parseColor("#FF4356"));
+```
+
+
+### Postback setting
+* The user's campaign participation record is sent to the registered postback URL. (Registration is possible on the company registration website)
+* Called using HTTP POST method
+
+```xml
+    pub_key => registered app key 
+    user_id => user id
+    user_reward => reward value
+```
+
+
+
+### help: minkyu.joo.mjt@gmail.com

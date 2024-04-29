@@ -292,4 +292,4 @@ Motto.setMainColor(Color.parseColor("#FF4356"));
 
 
 
-### help: minkyu.joo.mjt@gmail.com
+### Help: minkyu.joo.mjt@gmail.com

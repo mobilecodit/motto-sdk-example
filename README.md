@@ -1,6 +1,6 @@
 # Guide to Installing the Motto SDK on Android
 *  This document contains some initial settings and sources for installing Motto SDK.
-*  The latest version of Motto SDK is 1.0.5. Please always use the latest version.
+*  The latest version of Motto SDK is 1.0.6. Please always use the latest version.
 *  Please refer to the sample project for the full source.
 
 ## AndroidManifest setting
@@ -19,13 +19,16 @@
 ## Gradle setting
 * Add the below in the dependencies block in build.gradle file.
 ```java
-implementation 'kr.motto:motto-sdk:1.0.5'
+implementation 'kr.motto:motto-sdk:1.0.6'
 ```
 
 ## Proguard setting
 * If you use Proguard, add the code below to the proguard-rules.pro file.
 ```java
 -keep class kr.motto.mottolib.* { public *; }
+-keep class com.google.gson.reflect.TypeToken
+-keep class * extends com.google.gson.reflect.TypeToken
+-keep public class * implements java.lang.reflect.Type
 ```
 
 ## Motto-sdk initialize
@@ -151,7 +154,7 @@ Motto.setMainColor(Color.parseColor("#FF4356"));
 
 # 안드로이드용 Motto SDK 연동 가이드
 * 이 문서는 Motto SDK를 연동하기 위한 초기 설정과 소스 일부를 포함하고 있습니다.
-* 현재 Motto SDK의 최신버전은 1.0.5 입니다. 항상 최신 버전을 사용해주시길 바랍니다.
+* 현재 Motto SDK의 최신버전은 1.0.6 입니다. 항상 최신 버전을 사용해주시길 바랍니다.
 * 전체 소스는 샘플 프로젝트를 참조하시길 바랍니다.
 
 ## AndroidManifest 설정
@@ -170,13 +173,16 @@ Motto.setMainColor(Color.parseColor("#FF4356"));
 ## Gradle 설정
 * 모듈 수준의 build.gradle에 dependencies 블럭내 아래의 모듈을 추가합니다.
 ```java
-implementation 'kr.motto:motto-sdk:1.0.5'
+implementation 'kr.motto:motto-sdk:1.0.6'
 ```
 
 ## Proguard 설정
 * Proguard를 사용하신다면 proguard-rules.pro 파일에 아래의 코드를 추가합니다.
 ```java
 -keep class kr.motto.mottolib.* { public *; }
+-keep class com.google.gson.reflect.TypeToken
+-keep class * extends com.google.gson.reflect.TypeToken
+-keep public class * implements java.lang.reflect.Type
 ```
 
 ## Motto-sdk 소스 연동

@@ -137,13 +137,26 @@ Motto.setMainColor(Color.parseColor("#FF4356"));
 ### Postback setting
 * The user's campaign participation record is sent to the registered postback URL. (Registration is possible on the company registration website)
 * Called using HTTP POST method
-
 ```xml
     pub_key => registered app key 
     user_id => user id
     user_reward => reward value
 ```
 
+* Response: success
+```xml
+    {
+        "result": 1,
+        "message": "success"
+    }
+```
+* Response: fail
+```xml
+    {
+        "result": 0,
+        "message": "{error message}"
+    }
+```
 
 
 ### Help: minkyu.joo.mjt@gmail.com
@@ -294,4 +307,18 @@ Motto.setMainColor(Color.parseColor("#FF4356"));
     pub_key => 등록된 앱 key 값
     user_id => Motto SDK로 전달된 유저 id
     user_reward => 등록된 비율에 따라 계산된 유저포인트 값
+```
+* Response: 성공시
+```xml
+    {
+        "result": 1,
+        "message": "success"
+    }
+```
+* Response: 실패
+```xml
+    {
+        "result": 0,
+        "message": "{error message}"
+    }
 ```

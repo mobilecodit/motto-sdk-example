@@ -21,7 +21,7 @@
 ```java
 implementation 'kr.motto:motto-sdk:1.0.8'
 ```
-
+* Add the belows to repositories settings
 ```java
 repositories {
     ...
@@ -197,7 +197,7 @@ Motto.setMainColor(Color.parseColor("#FF4356"));
 ```java
 implementation 'kr.motto:motto-sdk:1.0.8'
 ```
-
+* repositories settings에 아래 내용을 추가합니다.
 ```java
 repositories {
     ...

@@ -150,6 +150,8 @@ Motto.setMainColor(Color.parseColor("#FF4356"));
     pub_key => registered app key 
     user_id => user id
     user_reward => reward value
+    transaction_id => transaction id of campaign complete
+    campaign_title => title of campaign
 ```
 
 * Response: success
@@ -325,6 +327,8 @@ Motto.setMainColor(Color.parseColor("#FF4356"));
     pub_key => 등록된 앱 key 값
     user_id => Motto SDK로 전달된 유저 id
     user_reward => 등록된 비율에 따라 계산된 유저포인트 값
+    transaction_id => 캠페인 완료 처리 transaction id 
+    campaign_title => 캠페인 제목
 ```
 * Response: 성공시
 ```xml

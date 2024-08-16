@@ -34,7 +34,7 @@ repositories {
 ## Proguard setting
 * If you use Proguard, add the code below to the proguard-rules.pro file.
 ```java
--keep class kr.motto.mottolib.* { public *; }
+-keep class kr.motto.mottolib.** { *; }
 -keep class com.google.gson.reflect.TypeToken
 -keep class * extends com.google.gson.reflect.TypeToken
 -keep public class * implements java.lang.reflect.Type
@@ -212,7 +212,7 @@ repositories {
 ## Proguard 설정
 * Proguard를 사용하신다면 proguard-rules.pro 파일에 아래의 코드를 추가합니다.
 ```java
--keep class kr.motto.mottolib.* { public *; }
+-keep class kr.motto.mottolib.** { *; }
 -keep class com.google.gson.reflect.TypeToken
 -keep class * extends com.google.gson.reflect.TypeToken
 -keep public class * implements java.lang.reflect.Type

@@ -19,7 +19,7 @@
 ## Gradle setting
 * Add the below in the dependencies block in build.gradle file.
 ```java
-implementation 'kr.motto:motto-sdk:1.0.10'
+implementation 'kr.motto:motto-sdk:1.1.0'
 ```
 * Add the belows to repositories settings
 ```java
@@ -197,7 +197,7 @@ Motto.setMainColor(Color.parseColor("#FF4356"));
 ## Gradle 설정
 * 모듈 수준의 build.gradle에 dependencies 블럭내 아래의 모듈을 추가합니다.
 ```java
-implementation 'kr.motto:motto-sdk:1.0.10'
+implementation 'kr.motto:motto-sdk:1.1.0'
 ```
 * repositories settings에 아래 내용을 추가합니다.
 ```java

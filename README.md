@@ -1,6 +1,6 @@
 # Guide to Installing the Motto SDK on Android
 *  This document contains some initial settings and sources for installing Motto SDK.
-*  The latest version of Motto SDK is 1.0.10. Please always use the latest version.
+*  The latest version of Motto SDK is 1.1.1. Please always use the latest version.
 *  Please refer to the sample project for the full source.
 
 ## AndroidManifest setting
@@ -178,7 +178,7 @@ Motto.setMainColor(Color.parseColor("#FF4356"));
 
 # 안드로이드용 Motto SDK 연동 가이드
 * 이 문서는 Motto SDK를 연동하기 위한 초기 설정과 소스 일부를 포함하고 있습니다.
-* 현재 Motto SDK의 최신버전은 1.0.10 입니다. 항상 최신 버전을 사용해주시길 바랍니다.
+* 현재 Motto SDK의 최신버전은 1.1.1 입니다. 항상 최신 버전을 사용해주시길 바랍니다.
 * 전체 소스는 샘플 프로젝트를 참조하시길 바랍니다.
 
 ## AndroidManifest 설정
